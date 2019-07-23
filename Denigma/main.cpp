@@ -79,23 +79,23 @@ void cipher ()
         gEncruptionLevel = 1;
         lCharacterNumber = static_cast <int> (lCharacter);
 
-        if ( (lCharacterNumber > 96) || (lCharacterNumber < 123) )
-        {
-            lCharacterNumber = letterChange(lCharacterNumber, gEncruptionLevel);
+        lCharacterNumber += gEncryption;
+
+        lCharacterNumber = letterChange(lCharacterNumber, gEncruptionLevel);
 
             gEncruptionLevel = 2;
             lCharacterNumber = letterChange(lCharacterNumber, gEncruptionLevel);
 
 
-            while(lCharacterNumber + gEncryption > 123)
+            while(lCharacterNumber  > 123)
             {
-                lCharacterNumber = lCharacterNumber + gEncryption - 122;
+                lCharacterNumber = lCharacterNumber  - 122;
             }
 
             lCharacter = static_cast <char> (lCharacterNumber);
             gEncryptedFile << lCharacterNumber;
 
-        }
+
     }
 
 }
