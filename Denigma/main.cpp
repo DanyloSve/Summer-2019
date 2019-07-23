@@ -31,13 +31,13 @@ int main()
 
     while (true)
     {
+        int choise(0);
         std::cout << " Input :\n "
                   << "1 to encrypt file\n"
                   << "2 to decrypt file\n";
-        int choise(0);
         if (choise == 1)
         {
-
+                std::cout<<"Encryption:\n";
                 std::cout << " Set path to file : " << '\n';
                 std::cout << " Example          : path / to / file / filename.txt" << '\n';
                 std::cin  >> lPathToFile;
@@ -81,6 +81,7 @@ int main()
 
         if(choise == 2)
         {
+                std::cout << "Decryption\n";
                 std::cout << " Set path to file : " << '\n';
                 std::cout << " Example          : path / to / file / filename.txt" << '\n';
                 std::cin  >> lPathToFile;
@@ -192,13 +193,7 @@ void decryption ()
 
         if ((lCharacterNumber > 96) || (lCharacterNumber < 123))
         {
-
-                lCharacterNumber = smallLetterChange(lCharacterNumber, lEncryptionLevel);
-
-                lEncryptionLevel = 1;
-
                 lCharacterNumber += gSmallLetterEncryption;
-
                 lCharacterNumber = smallLetterChange(lCharacterNumber, lEncryptionLevel);
 
                 while(lCharacterNumber  > 123)
@@ -206,16 +201,13 @@ void decryption ()
                         lCharacterNumber = lCharacterNumber  - 122;
                   }
 
-                lCharacter = static_cast <char> (lCharacterNumber);
-
+                lEncryptionLevel = 3;
+                lCharacterNumber = smallLetterChange(lCharacterNumber, lEncryptionLevel);
           }
 
 
         if ((lCharacterNumber > 65) || (lCharacterNumber < 90))
         {
-            lCharacterNumber = bigLetterChange(lCharacterNumber, lEncryptionLevel);
-
-            lEncryptionLevel = 1;
 
             lCharacterNumber += gBigLetterEncryption;
 
@@ -226,10 +218,12 @@ void decryption ()
                     lCharacterNumber = lCharacterNumber  - 90;
               }
 
-            lCharacter = static_cast <char> (lCharacterNumber);
+            lEncryptionLevel = 3;
+            lCharacterNumber = bigLetterChange(lCharacterNumber, lEncryptionLevel);
         }
 
-        gEncryptedFile << lCharacterNumber;
+        lCharacter = static_cast <char> (lCharacterNumber);
+        gDecryptedFile << lCharacterNumber;
     }
 }
 
@@ -1084,7 +1078,6 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         break;
     }
-
     return lCharacterNumber;
 }
 
