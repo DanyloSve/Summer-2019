@@ -143,12 +143,16 @@ void encryption ()
                 lEncryptionLevel = 2;
 
                 lCharacterNumber += gSmallLetterEncryption;
-
                 lCharacterNumber = smallLetterChange(lCharacterNumber, lEncryptionLevel);
 
                 while(lCharacterNumber  > 123)
                   {
-                        lCharacterNumber = lCharacterNumber  - 122;
+                        lCharacterNumber = lCharacterNumber  - 26;
+                  }
+
+                while(lCharacterNumber  < 96)
+                  {
+                        lCharacterNumber = lCharacterNumber  + 26;
                   }
 
                 lCharacter = static_cast <char> (lCharacterNumber);
@@ -163,20 +167,21 @@ void encryption ()
             lEncryptionLevel = 2;
 
             lCharacterNumber += gBigLetterEncryption;
-
             lCharacterNumber = bigLetterChange(lCharacterNumber, lEncryptionLevel);
 
             while(lCharacterNumber  > 91)
               {
-                    lCharacterNumber = lCharacterNumber  - 90;
+                    lCharacterNumber = lCharacterNumber  - 26;
+              }
+            while(lCharacterNumber  < 65)
+              {
+                    lCharacterNumber = lCharacterNumber  + 26;
               }
 
             lCharacter = static_cast <char> (lCharacterNumber);
         }
 
         gEncryptedFile << lCharacterNumber;
-
-
     }
 }
 
@@ -193,12 +198,17 @@ void decryption ()
 
         if ((lCharacterNumber > 96) || (lCharacterNumber < 123))
         {
-                lCharacterNumber += gSmallLetterEncryption;
+                lCharacterNumber -= gSmallLetterEncryption;
                 lCharacterNumber = smallLetterChange(lCharacterNumber, lEncryptionLevel);
 
                 while(lCharacterNumber  > 123)
                   {
-                        lCharacterNumber = lCharacterNumber  - 122;
+                        lCharacterNumber = lCharacterNumber  - 26;
+                  }
+
+                while(lCharacterNumber  < 96)
+                  {
+                        lCharacterNumber = lCharacterNumber  + 26;
                   }
 
                 lEncryptionLevel = 3;
@@ -209,7 +219,7 @@ void decryption ()
         if ((lCharacterNumber > 65) || (lCharacterNumber < 90))
         {
 
-            lCharacterNumber += gBigLetterEncryption;
+            lCharacterNumber -= gBigLetterEncryption;
 
             lCharacterNumber = bigLetterChange(lCharacterNumber, lEncryptionLevel);
 
@@ -238,8 +248,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber2 + gPasswordNumber3 - 14;
-            return lCharacterNumber;
+            gSmallLetterEncryption +=   gPasswordNumber2 + gPasswordNumber3 - 14;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -254,8 +264,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber6 + gPasswordNumber1 - gPasswordNumber5;
-            return lCharacterNumber;
+            gSmallLetterEncryption +=  gPasswordNumber6 + gPasswordNumber1 - gPasswordNumber5;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -270,8 +280,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber5 - 5 * gPasswordNumber4;
-            return lCharacterNumber;
+            gSmallLetterEncryption += gPasswordNumber5 - 5 * gPasswordNumber4;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -286,8 +296,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber3 + 10 + gPasswordNumber2 * 2;
-            return lCharacterNumber;
+            gSmallLetterEncryption +=  gPasswordNumber3 + 10 + gPasswordNumber2 * 2;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -302,8 +312,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber1 * gPasswordNumber1 / 2 - 1;
-            return lCharacterNumber;
+            gSmallLetterEncryption +=  gPasswordNumber1 * gPasswordNumber1 / 2 - 1;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -318,8 +328,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber2 + 2;
-            return lCharacterNumber;
+            gSmallLetterEncryption +=  gPasswordNumber2 + 2;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -334,8 +344,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber1;
-            return lCharacterNumber;
+            gSmallLetterEncryption +=  gPasswordNumber1;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -350,8 +360,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber2 % 3 ;
-            return lCharacterNumber;
+            gSmallLetterEncryption += gPasswordNumber2 % 3 ;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -366,8 +376,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber2 + 3;
-            return lCharacterNumber;
+            gSmallLetterEncryption +=  gPasswordNumber2 + 3;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -382,8 +392,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + pow(gPasswordNumber4, 2) + 4;
-            return lCharacterNumber;
+            gSmallLetterEncryption +=  pow(gPasswordNumber4, 2) + 4;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -398,8 +408,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber3 + gPasswordNumber5 +gPasswordNumber6 + 8;
-            return lCharacterNumber;
+            gSmallLetterEncryption +=   gPasswordNumber3 + gPasswordNumber5 +gPasswordNumber6 + 8;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -414,8 +424,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + 6* gPasswordNumber3 - gPasswordNumber1 - 7;
-            return lCharacterNumber;
+            gSmallLetterEncryption +=  6* gPasswordNumber3 - gPasswordNumber1 - 7;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -430,8 +440,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber5 * gPasswordNumber4 - gPasswordNumber1 * 12 - 4;
-            return lCharacterNumber;
+            gSmallLetterEncryption += gPasswordNumber5 * gPasswordNumber4 - gPasswordNumber1 * 12 - 4;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -446,9 +456,9 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + pow(gPasswordNumber1, gPasswordNumber6) -
+            gSmallLetterEncryption += pow(gPasswordNumber1, gPasswordNumber6) -
                     gPasswordNumber5 * gPasswordNumber3 * gPasswordNumber4 * gPasswordNumber2;
-            return lCharacterNumber;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -463,8 +473,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber2 - 3 * gPasswordNumber3;
-            return lCharacterNumber;
+            gSmallLetterEncryption += gPasswordNumber2 - 3 * gPasswordNumber3;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -479,9 +489,9 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber2 - 2 * gPasswordNumber6
+            gSmallLetterEncryption += gPasswordNumber2 - 2 * gPasswordNumber6
                     + gPasswordNumber2 / 2;
-            return lCharacterNumber;
+            break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -496,9 +506,9 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber1 * gPasswordNumber1 - 9 +
+            gSmallLetterEncryption += gPasswordNumber1 * gPasswordNumber1 - 9 +
                     gPasswordNumber4;
-            return lCharacterNumber;
+             break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -513,8 +523,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber1 + 3;
-            return lCharacterNumber;
+            gSmallLetterEncryption += gPasswordNumber1 + 3;
+             break;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -529,9 +539,9 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber3 - 3
+            gSmallLetterEncryption += gPasswordNumber3 - 3
                     + gPasswordNumber2 *gPasswordNumber5 % gPasswordNumber1;
-            return lCharacterNumber;
+             ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -546,8 +556,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber3;
-            return lCharacterNumber;
+            gSmallLetterEncryption += gPasswordNumber3;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -562,8 +572,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber2 + 7;
-            return lCharacterNumber;
+            gSmallLetterEncryption += gPasswordNumber2 + 7;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -578,8 +588,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber5 * gPasswordNumber1 / gPasswordNumber6;
-            return lCharacterNumber;
+            gSmallLetterEncryption += gPasswordNumber5 * gPasswordNumber1 / gPasswordNumber6;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -594,9 +604,9 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber1 - 11
-                    + pow( abs(gPasswordNumber4 - gPasswordNumber2), abs( gPasswordNumber3 - gPasswordNumber3) );
-            return lCharacterNumber;
+            gSmallLetterEncryption += gPasswordNumber1 - 11
+                    + pow( abs(gPasswordNumber4 - gPasswordNumber2), abs( gPasswordNumber3 - gPasswordNumber3 + 1) );
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -611,8 +621,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber5 - 5 * pow(2, gPasswordNumber6);
-            return lCharacterNumber;
+            gSmallLetterEncryption += gPasswordNumber5 - 5 * pow(2, gPasswordNumber6);
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -627,8 +637,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + 3 * gPasswordNumber4 - 88;
-            return lCharacterNumber;
+            gSmallLetterEncryption += 3 * gPasswordNumber4 - 88;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -643,8 +653,8 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gSmallLetterEncryption += lCharacterNumber + gPasswordNumber5 + 5*gPasswordNumber2 - 121;
-            return lCharacterNumber;
+            gSmallLetterEncryption += gPasswordNumber5 + 5*gPasswordNumber2 - 121;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -667,8 +677,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber1 / gPasswordNumber5 - 14;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber1 / gPasswordNumber5 - 14;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -683,8 +693,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber2 + 2 * gPasswordNumber3 - gPasswordNumber4 - 33;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber2 + 2 * gPasswordNumber3 - gPasswordNumber4 - 33;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -699,8 +709,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber2 - 3 * gPasswordNumber3;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber2 - 3 * gPasswordNumber3;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -715,8 +725,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber1 + 2 * gPasswordNumber2  - 41;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber1 + 2 * gPasswordNumber2  - 41;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -731,8 +741,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber5 * gPasswordNumber3  - 15;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber5 * gPasswordNumber3  - 15;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -747,8 +757,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber2 + 2;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber2 + 2;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -763,8 +773,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + 3 * gPasswordNumber3;
-            return lCharacterNumber;
+            gBigLetterEncryption += 3 * gPasswordNumber3;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -779,8 +789,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + 4 * gPasswordNumber5 % 3 ;
-            return lCharacterNumber;
+            gBigLetterEncryption += 4 * gPasswordNumber5 % 3 ;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -795,8 +805,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber2 + 11;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber2 + 11;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -811,8 +821,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + pow(gPasswordNumber4, 3) + 34;
-            return lCharacterNumber;
+            gBigLetterEncryption += pow(gPasswordNumber4, 3) + 34;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -827,8 +837,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber2 + gPasswordNumber6 - 18;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber2 + gPasswordNumber6 - 18;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -843,8 +853,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + 6* gPasswordNumber3 - 5 * gPasswordNumber1 - 7;
-            return lCharacterNumber;
+            gBigLetterEncryption += 6* gPasswordNumber3 - 5 * gPasswordNumber1 - 7;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -859,8 +869,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + 3 * gPasswordNumber3 - gPasswordNumber6  - 14;
-            return lCharacterNumber;
+            gBigLetterEncryption += 3 * gPasswordNumber3 - gPasswordNumber6  - 14;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -875,8 +885,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber +  3 * gPasswordNumber4 * gPasswordNumber2 - 21;
-            return lCharacterNumber;
+            gBigLetterEncryption += 3 * gPasswordNumber4 * gPasswordNumber2 - 21;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -891,8 +901,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber2 - 3 * gPasswordNumber3;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber2 - 3 * gPasswordNumber3;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -907,9 +917,9 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber2 - 4 * gPasswordNumber5
+            gBigLetterEncryption += gPasswordNumber2 - 4 * gPasswordNumber5
                     + gPasswordNumber3;
-            return lCharacterNumber;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -924,8 +934,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber3 * gPasswordNumber2 - 9;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber3 * gPasswordNumber2 - 9;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -940,8 +950,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + 4 * gPasswordNumber2 - 34;
-            return lCharacterNumber;
+            gBigLetterEncryption += 4 * gPasswordNumber2 - 34;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -956,9 +966,9 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber4 - 6
+            gBigLetterEncryption += gPasswordNumber4 - 6
                     + gPasswordNumber3 *gPasswordNumber5 % gPasswordNumber1;
-            return lCharacterNumber;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -973,8 +983,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber5 + 33;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber5 + 33;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -989,8 +999,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + 2 * gPasswordNumber6 - 17;
-            return lCharacterNumber;
+            gBigLetterEncryption += 2 * gPasswordNumber6 - 17;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -1005,8 +1015,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + 3 * gPasswordNumber2 * gPasswordNumber3 % gPasswordNumber6;
-            return lCharacterNumber;
+            gBigLetterEncryption += 3 * gPasswordNumber2 * gPasswordNumber3 % gPasswordNumber6;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -1021,8 +1031,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + gPasswordNumber1 - 11 + gPasswordNumber5 * 2;
-            return lCharacterNumber;
+            gBigLetterEncryption += gPasswordNumber1 - 11 + gPasswordNumber5 * 2;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -1037,8 +1047,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + 10 * gPasswordNumber5 - 9 * gPasswordNumber3 ;
-            return lCharacterNumber;
+            gBigLetterEncryption += 10 * gPasswordNumber5 - 9 * gPasswordNumber3 ;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -1053,8 +1063,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber - 2 * gPasswordNumber2 + 65;
-            return lCharacterNumber;
+            gBigLetterEncryption += -2 * gPasswordNumber2 + 65;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
@@ -1069,8 +1079,8 @@ int bigLetterChange(int lCharacterNumber, int lEncryptionLevel)
         }
         else if (lEncryptionLevel == 2)
         {
-            gBigLetterEncryption += lCharacterNumber + 3 * gPasswordNumber4 - 2 * gPasswordNumber1 - 89;
-            return lCharacterNumber;
+            gBigLetterEncryption += 3 * gPasswordNumber4 - 2 * gPasswordNumber1 - 89;
+            break ;
         }
         else if (lEncryptionLevel == 3)
         {
