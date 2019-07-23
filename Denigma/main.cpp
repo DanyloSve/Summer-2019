@@ -34,16 +34,16 @@ int main()
     while (true)
     {
         int choise;
-        std::cout << " Input :\n "
-                  << "1 to encrypt file\n"
-                  << "2 to decrypt file\n";
+        std::cout << " Input :\n"
+                  << " 1 to encrypt file\n"
+                  << " 2 to decrypt file\n";
         std::cin >> choise;
 
         if (choise == 1)
         {
                 std::ofstream gEncryptedFile;
 
-                std::cout<<"Encryption:\n";
+                std::cout<<" Encryption:\n";
                 std::cout << " Set path to file : " << '\n';
                 std::cout << " Example          : path / to / file / filename.txt" << '\n';
                 std::cin  >> lPathToFile;
@@ -51,11 +51,11 @@ int main()
 
                 gNotEncryptedFile.open(lPathToFile , std::ofstream::app);
 
-                if(gNotEncryptedFile.is_open())
+                if (gNotEncryptedFile.is_open())
                 {
                     std::cout << "File" << ' ' << lPathToFile
                               << " is SUCCESSFULLY opened !\n";
-                    break;
+
                 }
                 else
                 {
@@ -85,7 +85,7 @@ int main()
 
         }
 
-        if(choise == 2)
+        if (choise == 2)
         {
                 std::ofstream gNotEncryptedFile;
 
@@ -100,7 +100,7 @@ int main()
                 {
                     std::cout << "File" << ' ' << lPathToFile
                               << " is SUCCESSFULLY opened !\n";
-                    break;
+
                 }
                 else
                 {
