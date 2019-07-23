@@ -50,6 +50,7 @@ int main()
 
     std::cout << "Enter Passsword\n"
               << "Example : 1 2 3 4 5 6\n";
+
     std::cin >> gPasswordNumber1;
     std::cin >> gPasswordNumber2;
     std::cin >> gPasswordNumber3;
@@ -57,7 +58,8 @@ int main()
     std::cin >> gPasswordNumber5;
     std::cin >> gPasswordNumber6;
 
-    gEncryptedFile.open(lPathToFile);
+    gEncryptedFile.open("EncryptedFile.txt");
+
     cipher();
 
     std::cout << " File is encrypted SUCCESSFULLY !!!" << '\n';
@@ -79,23 +81,22 @@ void cipher ()
         gEncruptionLevel = 1;
         lCharacterNumber = static_cast <int> (lCharacter);
 
+
+        lCharacterNumber = letterChange(lCharacterNumber, gEncruptionLevel);
+
+        gEncruptionLevel = 2;
+
         lCharacterNumber += gEncryption;
 
         lCharacterNumber = letterChange(lCharacterNumber, gEncruptionLevel);
 
-            gEncruptionLevel = 2;
-            lCharacterNumber = letterChange(lCharacterNumber, gEncruptionLevel);
-
-
-            while(lCharacterNumber  > 123)
-            {
+        while(lCharacterNumber  > 123)
+          {
                 lCharacterNumber = lCharacterNumber  - 122;
-            }
+          }
 
-            lCharacter = static_cast <char> (lCharacterNumber);
-            gEncryptedFile << lCharacterNumber;
-
-
+        lCharacter = static_cast <char> (lCharacterNumber);
+        gEncryptedFile << lCharacterNumber;
     }
 
 }
@@ -112,7 +113,7 @@ int letterChange(int lCharacterNumber, int gEncruptionLevel)
         }
         else if (gEncruptionLevel == 2)
         {
-            gEncryption += lCharacterNumber + gPasswordNumber2+ gPasswordNumber3 - 14;
+            gEncryption += lCharacterNumber + gPasswordNumber2 + gPasswordNumber3 - 14;
             return lCharacterNumber;
         }
         break;
@@ -424,5 +425,4 @@ int letterChange(int lCharacterNumber, int gEncruptionLevel)
     }
 
     return lCharacterNumber;
-
 }
