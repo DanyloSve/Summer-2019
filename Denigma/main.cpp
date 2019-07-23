@@ -12,7 +12,9 @@ int smallLetterChange(int lCharacterNumber, int lEncryptionLevel);
 int bigLetterChange  (int lCharacterNumber, int lEncryptionLevel);
 
 std::fstream gNotEncryptedFile;
+
 std::fstream gEncryptedFile;
+
 std::fstream gDecryptedFile;
 
 int gSmallLetterEncryption (1);
@@ -31,12 +33,16 @@ int main()
 
     while (true)
     {
-        int choise(0);
+        int choise;
         std::cout << " Input :\n "
                   << "1 to encrypt file\n"
                   << "2 to decrypt file\n";
+        std::cin >> choise;
+
         if (choise == 1)
         {
+                std::ofstream gEncryptedFile;
+
                 std::cout<<"Encryption:\n";
                 std::cout << " Set path to file : " << '\n';
                 std::cout << " Example          : path / to / file / filename.txt" << '\n';
@@ -81,6 +87,8 @@ int main()
 
         if(choise == 2)
         {
+                std::ofstream gNotEncryptedFile;
+
                 std::cout << "Decryption\n";
                 std::cout << " Set path to file : " << '\n';
                 std::cout << " Example          : path / to / file / filename.txt" << '\n';
