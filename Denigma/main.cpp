@@ -5,8 +5,8 @@
 #include <fstream>
 #include <cmath>
 
-int smallLetterChange(int lCharacterNumber, int lEncruptionLevel);
-int bigLetterChange  (int lCharacterNumber, int lEncruptionLevel);
+int smallLetterChange(int lCharacterNumber, int lEncryptionLevel);
+int bigLetterChange  (int lCharacterNumber, int lEncryptionLevel);
 void cipher ();
 
 std::ifstream gNotEncryptedFile;
