@@ -1,30 +1,25 @@
 #include <QCoreApplication>
 #include <iostream>
-#include <array>
 
-using namespace std;
 
 char *getline()
 {
 
     char ch;
-    u_int size(4);
+    u_int buffer(4);
     u_int count(1);
 
     char *result   = new char[4];
 
-    while(cin.get(ch) && ch != '\n' )
+    while(std::cin.get(ch) && ch != '\n' )
     {
-        if(count == size - 1)
+        if(count == buffer - 1)
          {
-           size = size * 2;
+            buffer *= 2;
 
-           char *temp   = new char[size];
+            char *temp   = new char[size];
 
-           for(u_int i(0); i < size; i++)
-               {
-                 temp[i] = result[i];
-               }
+             memcpu(temp, result, buffer);
 
              temp[count - 1] = ch;
 
@@ -32,15 +27,11 @@ char *getline()
 
              char *result = new char[size];
 
-             for(u_int i(0);i < size;i++)
-              {
-                result[i] = temp[i];
-              }
-
+             memcpu(result, temp, buffer);
             delete[] temp;
         }
 
-        if(count < size) //this work
+        if(count < buffer)
           {
             for(u_int i(count - 1); i < count; i++)
               {
@@ -52,11 +43,11 @@ char *getline()
         count++;
     }
 
-    result[size ] = '\0';
+    result[buffer] = '\0';
 
-    for(u_int i(0); i != size; i++)
+    for(u_int i(0); i != buffer; i++)
       {
-        cout<<result[i];
+        std::cout<<result[i];
       }
     return result;
 }
