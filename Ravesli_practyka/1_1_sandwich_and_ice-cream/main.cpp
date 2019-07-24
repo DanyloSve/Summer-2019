@@ -1,13 +1,8 @@
-#include <QCoreApplication>
-
 #include <iostream>
 #include <string>
 
 bool isSandwichWithIceCream (std :: string s)
 {
-//    bool sandwich (false);
-//    bool iceCream (false);
-
     int lowerSandwichSize(0);
     int upperSandwichSize(0);
     int iceCreamSize(0);
